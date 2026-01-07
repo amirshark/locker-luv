@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { LogOut } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useLocker } from '../lockerContext';
@@ -21,12 +22,12 @@ const PaymentPage = () => {
   } = useLocker();
 
   const paymentProviders = [
-    { name: 'Touch n Go eWallet', logo: '💳' },
-    { name: 'GrabPay', logo: '🟢' },
-    { name: 'Boost', logo: '🚀' },
-    { name: 'Maybank QRPay', logo: '🏦' },
-    { name: 'CIMB Pay', logo: '💰' },
-    { name: 'Credit/Debit Card', logo: '💳' },
+    { name: 'Touch n Go eWallet', logo: '/img/tng.png' },
+    { name: 'GrabPay', logo: '/img/grab.png' },
+    { name: 'Boost', logo: '/img/boost.png' },
+    { name: 'Maybank QRPay', logo: '/img/qrpay.png' },
+    { name: 'CIMB Pay', logo: '/img/cimb.png' },
+    { name: 'Credit/Debit Card', logo: '/img/roy.png' },
   ];
 
   const handlePayment = () => {
@@ -92,7 +93,15 @@ const PaymentPage = () => {
                 onClick={handlePayment}
                 className="w-full bg-pink-50 hover:bg-pink-100 text-left py-4 px-6 rounded-2xl transition duration-200 flex items-center space-x-4"
               >
-                <span className="text-2xl">{provider.logo}</span>
+                <span className="relative w-10 h-6 flex items-center">
+                  <Image
+                    src={provider.logo}
+                    alt={provider.name}
+                    width={80}
+                    height={32}
+                    className="object-contain"
+                  />
+                </span>
                 <span className="font-semibold text-gray-700">{provider.name}</span>
               </button>
             ))}
