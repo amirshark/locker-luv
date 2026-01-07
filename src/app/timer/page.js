@@ -8,6 +8,7 @@ import { useLocker } from '../lockerContext';
 const TimerPage = () => {
   const router = useRouter();
   const {
+    user,
     selectedLocker,
     timeRemaining,
     penalty,
@@ -58,7 +59,9 @@ const TimerPage = () => {
         <div className="bg-white rounded-3xl shadow-xl p-8">
           <div className="text-center mb-6">
             <div className="bg-pink-100 rounded-2xl p-4 mb-4">
-              <p className="text-sm text-gray-600 mb-1">Your Locker</p>
+              <p className="text-sm text-gray-600 mb-1">
+                {(user && user.name) || 'Your'} Locker
+              </p>
               <p className="text-4xl font-bold text-pink-600">{selectedLocker}</p>
             </div>
           </div>
